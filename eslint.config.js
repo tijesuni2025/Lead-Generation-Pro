@@ -22,6 +22,10 @@ export default [
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
+      'react-hooks/set-state-in-effect': 'warn',
+      'react-hooks/purity': 'warn',
+      'react-hooks/static-components': 'warn',
+      'react-hooks/rules-of-hooks': 'error',
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },

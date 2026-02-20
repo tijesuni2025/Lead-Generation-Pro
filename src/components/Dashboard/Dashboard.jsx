@@ -32,6 +32,14 @@ export const Dashboard = ({ user }) => {
   const topLeads = useMemo(() => [...leads].sort((a, b) => b.score - a.score).slice(0, 5), [leads]);
   const recentLeads = useMemo(() => [...leads].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).slice(0, 5), [leads]);
 
+  // month-over-month change
+  const lastMonthStats = useMemo(() => ({
+    total: Math.round(stats.total * 0.969),
+    value: Math.round(stats.value * 0.969),
+    avgScore: Math.round(stats.avgScore * 0.969),
+    hot: Math.round(stats.hot * 0.969),
+  }), [stats]);
+
   if (isAdmin) {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
@@ -70,14 +78,6 @@ export const Dashboard = ({ user }) => {
 
   // Client Dashboard
   const greeting = new Date().getHours() < 12 ? 'Morning' : new Date().getHours() < 18 ? 'Afternoon' : 'Evening';
-  
-  // month-over-month change
-  const lastMonthStats = useMemo(() => ({
-    total: Math.round(stats.total * 0.969),
-    value: Math.round(stats.value * 0.969),
-    avgScore: Math.round(stats.avgScore * 0.969),
-    hot: Math.round(stats.hot * 0.969),
-  }), [stats]);
   
 //   const calculateTrend = (current, previous) => {
 //     if (!previous || previous === 0) return '+0.0%';
