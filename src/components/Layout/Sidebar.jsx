@@ -77,10 +77,7 @@ export const Sidebar = ({ user, currentPage, setCurrentPage, onLogout, isOpen, o
         <div style={{ padding: '20px 16px', borderBottom: `1px solid ${c.gray[800]}`, position: 'relative', zIndex: 1 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <img src="/bluestar-icon.svg" alt="BluestarAI" style={{ width: 32, height: 32, objectFit: 'contain' }} />
-            <div>
-              <p style={{ fontSize: 16, fontWeight: 700, color: c.gray[100], letterSpacing: '-0.01em', fontFamily: tokens.font.heading }}>{CONFIG.appName}</p>
-              <p style={{ fontSize: 10, color: c.accent.DEFAULT, fontFamily: tokens.font.sans, fontWeight: 500 }}>by {CONFIG.company}</p>
-            </div>
+            <img src="/LEADGEN_Pro.svg" alt="LeadGen Pro" style={{ height: 18, objectFit: 'contain' }} />
           </div>
         </div>
         
@@ -94,6 +91,11 @@ export const Sidebar = ({ user, currentPage, setCurrentPage, onLogout, isOpen, o
           </div>
         </nav>
         
+        {/* Powered by */}
+        <div style={{ padding: '8px 16px 0', position: 'relative', zIndex: 1, textAlign: 'center' }}>
+          <img src="/Powered_by_BLUESTARAI.svg" alt="Powered by BluestarAI" style={{ height: 10, opacity: 0.4, objectFit: 'contain' }} />
+        </div>
+
         {/* Stacked avatar with org */}
         <div style={{ padding: 12, borderTop: `1px solid ${c.gray[800]}`, position: 'relative', zIndex: 1 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '10px 12px', background: c.gray[850], borderRadius: r.lg, border: `1px solid ${c.gray[800]}` }}>

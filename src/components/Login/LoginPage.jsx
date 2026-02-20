@@ -36,17 +36,18 @@ export const LoginPage = ({ onLogin }) => {
       <div style={{ position: 'fixed', inset: 0, background: `radial-gradient(ellipse at 30% 20%, rgba(49, 72, 185, 0.15) 0%, transparent 50%)`, pointerEvents: 'none' }} />
       <div style={{ position: 'fixed', inset: 0, background: `radial-gradient(ellipse at 80% 80%, rgba(242, 76, 3, 0.08) 0%, transparent 50%)`, pointerEvents: 'none' }} />
       
-      {/* Decorative star element */}
-      <div style={{ position: 'fixed', top: '10%', right: '15%', width: 300, height: 300, opacity: 0.03, pointerEvents: 'none' }}>
-        <img src="/logo-white.png" alt="" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+      {/* Decorative 3D logo watermark */}
+      <div style={{ position: 'fixed', top: '5%', right: '8%', width: 400, height: 400, opacity: 0.03, pointerEvents: 'none' }}>
+        <img src="/Bluestar_Logo_3D_-_Copy_3-1536x695.svg" alt="" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
       </div>
       
       <div style={{ width: '100%', maxWidth: 400, position: 'relative' }}>
         {/* Logo */}
         <div style={{ textAlign: 'center', marginBottom: 40 }}>
-          <img src="/logo-colored.png" alt="BluestarAI" style={{ width: 64, height: 64, margin: '0 auto 16px', objectFit: 'contain' }} />
+          <img src="/BluestarAI_Logo_Vertical_4x_2.svg" alt="BluestarAI" style={{ width: 80, height: 'auto', margin: '0 auto 12px', objectFit: 'contain' }} />
+          <img src="/LEADGEN_Pro.svg" alt="LeadGen Pro" style={{ height: 20, margin: '0 auto 16px', objectFit: 'contain' }} />
           <h1 style={{ fontSize: 24, fontWeight: 700, color: c.gray[100], marginBottom: 6, fontFamily: tokens.font.heading }}>Welcome back</h1>
-          <p style={{ fontSize: 14, color: c.gray[400], fontFamily: tokens.font.sans }}>Sign in to <span style={{ color: c.accent.DEFAULT, fontWeight: 500 }}>{CONFIG.appName}</span></p>
+          <p style={{ fontSize: 14, color: c.gray[400], fontFamily: tokens.font.sans }}>Sign in to your workspace</p>
         </div>
         
         <Card padding={28} gradient style={{ border: `1px solid ${c.gray[700]}` }}>
@@ -94,7 +95,9 @@ export const LoginPage = ({ onLogin }) => {
           </div>
         </Card>
         
-        <p style={{ textAlign: 'center', marginTop: 20, fontSize: 12, color: c.gray[600], fontFamily: tokens.font.sans }}>© 2025 <span style={{ color: c.primary.light }}>{CONFIG.company}</span></p>
+        <div style={{ textAlign: 'center', marginTop: 20 }}>
+          <img src="/Powered_by_BLUESTARAI.svg" alt="Powered by BluestarAI" style={{ height: 11, opacity: 0.35, objectFit: 'contain' }} />
+        </div>
       </div>
     </div>
   );

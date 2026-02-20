@@ -43,6 +43,17 @@ export const Dashboard = ({ user }) => {
   if (isAdmin) {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+        {/* Admin hero banner */}
+        <div style={{ borderRadius: 20, position: 'relative', overflow: 'hidden' }}>
+          <img src="/Frame_48095743.svg" alt="" style={{ width: '100%', height: 'auto', display: 'block' }} />
+          <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', padding: '0 40px' }}>
+            <div>
+              <img src="/LEADGEN_Pro.svg" alt="LeadGen Pro" style={{ height: 24, marginBottom: 12, opacity: 0.7 }} />
+              <p style={{ fontSize: 14, color: '#64748b', fontFamily: tokens.font.sans }}>Admin Overview</p>
+            </div>
+          </div>
+        </div>
+
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16 }}>
           <Metric label="Total Clients" value={stats.clients} icon={Users} iconColor={c.primary[100]} />
           <Metric label="Total Leads" value={fmt.number(stats.leads)} icon={Target} iconColor={c.success.muted} />
@@ -78,223 +89,76 @@ export const Dashboard = ({ user }) => {
 
   // Client Dashboard
   const greeting = new Date().getHours() < 12 ? 'Morning' : new Date().getHours() < 18 ? 'Afternoon' : 'Evening';
-  
-//   const calculateTrend = (current, previous) => {
-//     if (!previous || previous === 0) return '+0.0%';
-//     const change = ((current - previous) / previous) * 100;
-//     return change >= 0 ? `+${change.toFixed(1)}%` : `${change.toFixed(1)}%`;
-//   };
-  
-//   const StatCard = ({ label, value, icon: Icon, currentVal, previousVal }) => {
-//     const trend = calculateTrend(currentVal || 0, previousVal || 0);
-//     const isPositive = !trend.startsWith('-');
-    
-//     return (
-//       <div style={{
-//         background: 'linear-gradient(180deg, rgba(46, 51, 90, 0) 0%, rgba(28, 27, 51, 0.2) 100%)',
-//         borderRadius: 20,
-//         padding: '24px',
-//         border: '1px solid #3148B9',
-//         display: 'flex',
-//         alignItems: 'flex-start',
-//         justifyContent: 'space-between',
-//         minWidth: 0,
-//         flex: 1,
-//         position: 'relative',
-//         overflow: 'hidden',
-//         minHeight: 140,
-//       }}>
-//         {/* Background glow effects */}
-//         <div style={{
-//           position: 'absolute',
-//           bottom: -40,
-//           left: '50%',
-//           transform: 'translateX(-50%)',
-//           width: '80%',
-//           height: 80,
-//           background: 'radial-gradient(ellipse at center, rgba(49, 72, 185, 0.3) 0%, transparent 70%)',
-//           pointerEvents: 'none',
-//         }} />
-//         <div style={{
-//           position: 'absolute',
-//           bottom: 0,
-//           left: '50%',
-//           transform: 'translateX(-50%)',
-//           width: '60%',
-//           height: 20,
-//           background: 'radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%)',
-//           pointerEvents: 'none',
-//         }} />
-        
-//         {/* Icon and stats */}
-//         <div style={{ display: 'flex', alignItems: 'flex-start', gap: 16, position: 'relative', zIndex: 1 }}>
-//           {/* Glassmorphic Icon container */}
-//           <div style={{
-//             width: 64,
-//             height: 64,
-//             borderRadius: 14,
-//             background: 'linear-gradient(180deg, rgba(46, 51, 90, 0.5) 0%, rgba(28, 27, 51, 0.3) 100%)',
-//             backdropFilter: 'blur(6px)',
-//             display: 'flex',
-//             alignItems: 'center',
-//             justifyContent: 'center',
-//             flexShrink: 0,
-//             border: '1px solid rgba(172, 186, 253, 0.15)',
-//             position: 'relative',
-//             overflow: 'hidden',
-//           }}>
-//             {/* Inner glow */}
-//             <div style={{
-//               position: 'absolute',
-//               bottom: -20,
-//               left: '50%',
-//               transform: 'translateX(-50%)',
-//               width: '100%',
-//               height: 40,
-//               background: 'radial-gradient(ellipse at center, rgba(49, 72, 185, 0.5) 0%, transparent 70%)',
-//               pointerEvents: 'none',
-//             }} />
-//             <Icon size={28} style={{ color: '#94a3b8', position: 'relative', zIndex: 1 }} />
-//           </div>
-          
-//           {/* Label and value */}
-//           <div style={{ paddingTop: 4 }}>
-//             <p style={{ 
-//               fontSize: 14, 
-//               color: '#94a3b8', 
-//               marginBottom: 8, 
-//               fontFamily: tokens.font.sans,
-//               fontWeight: 400,
-//             }}>{label}</p>
-//             <p style={{ 
-//               fontSize: 40, 
-//               fontWeight: 600, 
-//               color: '#ffffff', 
-//               fontFamily: tokens.font.heading, 
-//               lineHeight: 1,
-//               letterSpacing: '-0.02em',
-//             }}>{value}</p>
-//           </div>
-//         </div>
-        
-//         {/* Trend indicator */}
-//         <div style={{ 
-//           textAlign: 'right', 
-//           flexShrink: 0, 
-//           position: 'relative', 
-//           zIndex: 1,
-//           display: 'flex',
-//           flexDirection: 'column',
-//           alignItems: 'flex-end',
-//         }}>
-//           <div style={{ 
-//             display: 'flex', 
-//             alignItems: 'center', 
-//             gap: 6,
-//             marginBottom: 4,
-//           }}>
-//             {/* Trend arrow */}
-//             {isPositive ? (
-//               <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-//                 <path d="M5 12.5L10 7.5M10 7.5H6.25M10 7.5V11.25" stroke="#63D2A1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-//               </svg>
-//             ) : (
-//               <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-//                 <path d="M5 7.5L10 12.5M10 12.5H6.25M10 12.5V8.75" stroke="#ef4444" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-//               </svg>
-//             )}
-//             <span style={{ 
-//               fontSize: 15, 
-//               fontWeight: 600, 
-//               color: isPositive ? '#63D2A1' : '#ef4444',
-//             }}>{trend}</span>
-//           </div>
-//           <p style={{ 
-//             fontSize: 12, 
-//             color: '#64748b',
-//             lineHeight: 1.3,
-//           }}>From Last<br/>Month</p>
-//         </div>
-//       </div>
-//     );
-//   };
-  
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-      {/* Hero banner matching design mockup exactly */}
-      <div style={{ 
-        padding: '32px 40px', 
-        background: 'linear-gradient(135deg, #020617 0%, #0a1628 50%, #0c1e3d 100%)',
-        borderRadius: 20, 
-        border: '1px solid #3148B9',
+      {/* Hero banner with design asset background */}
+      <div style={{
+        borderRadius: 20,
         position: 'relative',
         overflow: 'hidden',
         minHeight: 180,
       }}>
-        {/* Bottom glow effects */}
-        <div style={{ 
-          position: 'absolute', 
-          bottom: -60, 
-          left: '30%', 
-          width: '40%', 
-          height: 120, 
-          background: 'radial-gradient(ellipse at center bottom, rgba(49, 72, 185, 0.4) 0%, transparent 70%)',
-          pointerEvents: 'none',
-        }} />
-        <div style={{ 
-          position: 'absolute', 
-          bottom: 0, 
-          left: '35%', 
-          width: '30%', 
-          height: 30, 
-          background: 'radial-gradient(ellipse at center bottom, rgba(255, 255, 255, 0.15) 0%, transparent 70%)',
-          pointerEvents: 'none',
-        }} />
-        
-        <div style={{ 
-          position: 'absolute', 
-          right: 30, 
-          top: '50%', 
+        {/* Full banner background from design */}
+        <img
+          src="/Frame_48095743.svg"
+          alt=""
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            pointerEvents: 'none',
+          }}
+        />
+
+        {/* 3D logo watermark */}
+        <div style={{
+          position: 'absolute',
+          right: 20,
+          top: '50%',
           transform: 'translateY(-50%)',
-          width: 180,
-          height: 180,
+          width: 200,
+          height: 200,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
         }}>
-          <img 
-            src="/Group_1597880443.svg" 
-            alt="" 
-            style={{ 
-              width: '100%', 
-              height: '100%', 
+          <img
+            src="/Bluestar_Logo_3D_-_Copy_3-1536x695.svg"
+            alt=""
+            style={{
+              width: '100%',
+              height: '100%',
               objectFit: 'contain',
+              opacity: 0.12,
               filter: 'drop-shadow(0 0 40px rgba(49, 72, 185, 0.4))',
-            }} 
+            }}
           />
         </div>
-        
-        <div style={{ position: 'relative', zIndex: 1 }}>
-          <p style={{ 
-            fontSize: 22, 
-            color: '#94a3b8', 
-            marginBottom: 8, 
-            fontFamily: tokens.font.sans, 
+
+        <div style={{ position: 'relative', zIndex: 1, padding: '32px 40px' }}>
+          <p style={{
+            fontSize: 22,
+            color: '#94a3b8',
+            marginBottom: 8,
+            fontFamily: tokens.font.sans,
             fontWeight: 400,
           }}>Good {greeting},</p>
-          <h2 style={{ 
-            fontSize: 52, 
-            fontWeight: 700, 
-            color: '#ffffff', 
-            fontFamily: tokens.font.heading, 
+          <h2 style={{
+            fontSize: 52,
+            fontWeight: 700,
+            color: '#ffffff',
+            fontFamily: tokens.font.heading,
             marginBottom: 16,
             letterSpacing: '-0.02em',
           }}>
             {user.name.split(' ')[0]}
           </h2>
-          <p style={{ 
-            fontSize: 16, 
-            color: '#64748b', 
+          <p style={{
+            fontSize: 16,
+            color: '#64748b',
             fontFamily: tokens.font.sans,
           }}>Here's what's happening today</p>
         </div>

@@ -30,7 +30,11 @@ export const Header = ({ title, user, onMenuClick, onNavigate, onSelectLead }) =
         <Menu size={22} />
       </button>
       
-      <h1 style={{ fontSize: 18, fontWeight: 600, color: c.gray[100], letterSpacing: '-0.01em', fontFamily: tokens.font.heading }}>{title}</h1>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+        <h1 style={{ fontSize: 18, fontWeight: 600, color: c.gray[100], letterSpacing: '-0.01em', fontFamily: tokens.font.heading }}>{title}</h1>
+        <div style={{ width: 1, height: 20, background: c.gray[800] }} />
+        <img src="/LEADGEN_Pro.svg" alt="LeadGen Pro" style={{ height: 14, opacity: 0.4, objectFit: 'contain' }} />
+      </div>
       
       {/* Search */}
       {user.role === 'client' && (
