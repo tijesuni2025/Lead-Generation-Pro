@@ -5,18 +5,18 @@ import { react } from 'react';
 export const tokens = {
   colors: {
     gray: {
-      950: '#020409',  // Blue Black
-      900: '#0B1828',  // Dark Blue (primary background)
-      850: '#0f1d2f',  // Slightly lighter
-      800: '#152238',  // Card backgrounds
-      700: '#1c2d45',  // Borders, dividers
+      950: '#020409',  // Darkest (Gradient 1 start)
+      900: '#0B1828',  // Dark Blue (Frame 48095724)
+      850: '#111f33',  // Slightly lighter dark blue
+      800: '#1a2d47',  // Card/surface backgrounds
+      700: '#232323',  // Grey (Frame 48095720) — borders, dividers
       600: '#2a3f5f',  // Muted elements
       500: '#3d5478',  // Secondary text
       400: '#5a7194',  // Placeholder text
       300: '#8ba3c7',  // Secondary content
       200: '#b8cce6',  // Light accents
       100: '#dce8f5',  // Very light
-      50: '#f0f5fa',   // Near white
+      50: '#FFFFFF',   // White (Frame 48095721)
     },
     primary: {
       DEFAULT: '#3148B9',  // Space Blue

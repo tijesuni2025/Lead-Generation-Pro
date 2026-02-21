@@ -13,24 +13,29 @@ import { MOCK_USERS, CONFIG } from '../../components';
 // 3 = Frame 1597883184: Same + "© 2026 BLUESTARAI. All Rights Reserved."
 // 4 = Frame 1597883185: Login form
 
-// Aurora background: dark at top, bright blue glow at bottom horizon
+// Color palette from Figma frames:
+// Space Blue: #3148B9  (Frame 48095722)
+// Orange:     #F24C03  (Frame 48095723)
+// Dark Blue:  #0B1828  (Frame 48095724)
+// White:      #FFFFFF  (Frame 48095721)
+// Grey:       #232323  (Frame 48095720)
+// Gradient 1: #020409 → #3148B9  (Frame 48095718)
+// Gradient 2: #F24C03 → #3148B9  (Frame 48095719)
+
+// Aurora background: dark at top, bright Space Blue glow at bottom horizon
 const AuroraBackground = () => (
   <>
-    {/* Base dark */}
     <div style={{ position: 'fixed', inset: 0, background: '#020409', pointerEvents: 'none' }} />
-    {/* Top-to-bottom gradient: dark blue at top fading to darkest at bottom */}
     <div style={{ position: 'fixed', inset: 0, background: 'linear-gradient(180deg, #0B1828 0%, #020409 60%)', pointerEvents: 'none' }} />
-    {/* Bottom horizon glow — bright blue concentrated at bottom center */}
+    {/* Bottom horizon glow — Space Blue */}
     <div style={{
       position: 'fixed', left: 0, right: 0, bottom: 0, height: '55%', pointerEvents: 'none',
       background: 'radial-gradient(ellipse 80% 60% at 50% 100%, rgba(49, 72, 185, 0.45) 0%, rgba(49, 72, 185, 0.15) 40%, transparent 70%)',
     }} />
-    {/* Wider subtle blue spread */}
     <div style={{
       position: 'fixed', left: 0, right: 0, bottom: 0, height: '70%', pointerEvents: 'none',
       background: 'radial-gradient(ellipse 120% 50% at 50% 100%, rgba(49, 72, 185, 0.12) 0%, transparent 60%)',
     }} />
-    {/* Bright white-blue core at very bottom */}
     <div style={{
       position: 'fixed', left: 0, right: 0, bottom: -20, height: '20%', pointerEvents: 'none',
       background: 'radial-gradient(ellipse 60% 80% at 50% 100%, rgba(100, 140, 255, 0.2) 0%, transparent 60%)',
@@ -47,7 +52,6 @@ export const LoginPage = ({ onLogin }) => {
   const [loginType, setLoginType] = useState('client');
   const [rememberMe, setRememberMe] = useState(false);
 
-  // Splash animation timeline
   useEffect(() => {
     const timers = [
       setTimeout(() => setStage(1), 800),
@@ -98,74 +102,71 @@ export const LoginPage = ({ onLogin }) => {
           alignItems: 'center',
           justifyContent: 'center',
         }}>
-          {/* Row: star icon + LEADGEN Pro text — appears at stage 1 */}
+          {/* Row: white star icon + LEADGEN Pro — appears at stage 1 */}
           <div style={{
             display: 'flex',
             alignItems: 'center',
-            gap: stage >= 3 ? 14 : 12,
+            gap: 16,
             opacity: stage >= 1 ? 1 : 0,
             transform: stage >= 1 ? 'translateY(0) scale(1)' : 'translateY(16px) scale(0.9)',
             transition: `all 0.7s ${ease}`,
-            marginBottom: 12,
+            marginBottom: 10,
           }}>
             <img
-              src="/bluestar-icon.svg"
+              src="/logo-white.png"
               alt=""
               style={{
-                width: stage >= 3 ? 38 : 30,
-                height: stage >= 3 ? 38 : 30,
+                width: 36,
+                height: 36,
                 objectFit: 'contain',
-                transition: `all 0.7s ${ease}`,
-                filter: 'brightness(2)',
               }}
             />
             <img
               src="/LEADGEN_Pro.svg"
               alt="LeadGen Pro"
               style={{
-                height: stage >= 3 ? 28 : 22,
+                height: 24,
                 objectFit: 'contain',
-                transition: `height 0.7s ${ease}`,
               }}
             />
           </div>
 
-          {/* Powered by BLUESTARAI — appears at stage 1 */}
+          {/* Powered by BLUESTARAI — appears at stage 1, directly below */}
           <div style={{
-            opacity: stage >= 1 ? 0.5 : 0,
+            opacity: stage >= 1 ? 0.45 : 0,
             transform: stage >= 1 ? 'translateY(0)' : 'translateY(10px)',
             transition: `all 0.6s ${ease} 0.15s`,
-            marginBottom: stage >= 2 ? 48 : 24,
+            marginBottom: stage >= 2 ? 60 : 0,
           }}>
             <img
               src="/Powered_by_BLUESTARAI.svg"
               alt="Powered by BluestarAI"
-              style={{ height: 11, objectFit: 'contain' }}
+              style={{ height: 12, objectFit: 'contain' }}
             />
           </div>
 
           {/* Tagline — appears at stage 2 */}
           <p style={{
-            fontSize: 13,
-            color: '#5a7194',
+            fontSize: 14,
+            color: '#FFFFFF',
             fontFamily: tokens.font.sans,
-            fontWeight: 400,
+            fontWeight: 300,
             letterSpacing: '0.03em',
-            opacity: stage >= 2 ? 1 : 0,
+            opacity: stage >= 2 ? 0.5 : 0,
             transform: stage >= 2 ? 'translateY(0)' : 'translateY(8px)',
             transition: `all 0.6s ${ease}`,
-            marginBottom: 16,
+            marginBottom: 20,
           }}>
-            AI-Powered Lead Management & Analytics
+            AI-Powered Lead Management &amp; Analytics
           </p>
 
           {/* Copyright — appears at stage 3 */}
           <p style={{
             fontSize: 11,
-            color: '#3d5478',
+            color: '#FFFFFF',
             fontFamily: tokens.font.sans,
-            fontWeight: 400,
-            opacity: stage >= 3 ? 1 : 0,
+            fontWeight: 300,
+            opacity: stage >= 3 ? 0.3 : 0,
             transform: stage >= 3 ? 'translateY(0)' : 'translateY(6px)',
             transition: `all 0.5s ${ease}`,
           }}>
@@ -199,10 +200,10 @@ export const LoginPage = ({ onLogin }) => {
       {/* Decorative geometric star — bottom right */}
       <div style={{
         position: 'fixed',
-        bottom: -40,
-        right: -40,
-        width: 320,
-        height: 320,
+        bottom: -60,
+        right: -60,
+        width: 360,
+        height: 360,
         opacity: 0.04,
         pointerEvents: 'none',
         zIndex: 1,
@@ -212,61 +213,64 @@ export const LoginPage = ({ onLogin }) => {
 
       <div style={{
         width: '100%',
-        maxWidth: 420,
+        maxWidth: 440,
         position: 'relative',
         zIndex: 2,
         animation: 'slideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1)',
       }}>
         {/* Header text */}
-        <div style={{ textAlign: 'center', marginBottom: 32 }}>
+        <div style={{ textAlign: 'center', marginBottom: 36 }}>
           <h1 style={{
-            fontSize: 28,
+            fontSize: 32,
             fontWeight: 700,
-            color: '#ffffff',
-            marginBottom: 8,
+            color: '#FFFFFF',
+            marginBottom: 10,
             fontFamily: tokens.font.heading,
+            letterSpacing: '-0.01em',
           }}>Welcome back!</h1>
           <p style={{
-            fontSize: 15,
-            color: '#5a7194',
+            fontSize: 16,
+            color: '#FFFFFF',
             fontFamily: tokens.font.sans,
-          }}>Sign into <span style={{ color: '#F24C03', fontWeight: 500 }}>LEADGEN Pro</span></p>
+            fontWeight: 300,
+            opacity: 0.5,
+          }}>Sign into <span style={{ color: '#F24C03', fontWeight: 500, opacity: 1 }}>LEADGEN Pro</span></p>
         </div>
 
         {/* Glass card */}
         <div style={{
-          padding: 28,
-          background: 'rgba(11, 24, 40, 0.6)',
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)',
-          borderRadius: 16,
+          padding: 32,
+          background: 'rgba(11, 24, 40, 0.55)',
+          backdropFilter: 'blur(24px)',
+          WebkitBackdropFilter: 'blur(24px)',
+          borderRadius: 20,
           border: '1px solid rgba(49, 72, 185, 0.2)',
         }}>
           {/* Toggle */}
           <div style={{
             display: 'flex',
-            gap: 4,
-            marginBottom: 24,
+            gap: 0,
+            marginBottom: 28,
             padding: 4,
             background: 'rgba(2, 4, 9, 0.5)',
-            borderRadius: r.lg,
-            border: '1px solid rgba(49, 72, 185, 0.15)',
+            borderRadius: 12,
+            border: '1px solid rgba(49, 72, 185, 0.12)',
           }}>
             {['client', 'admin'].map(type => (
               <button key={type} onClick={() => setLoginType(type)}
                 style={{
-                  flex: 1, padding: '10px 0', fontSize: 14, fontWeight: 500, textTransform: 'capitalize',
+                  flex: 1, padding: '11px 0', fontSize: 14, fontWeight: 500, textTransform: 'capitalize',
                   fontFamily: tokens.font.sans,
                   color: loginType === type
-                    ? (type === 'client' ? '#ffffff' : '#F24C03')
-                    : '#5a7194',
+                    ? (type === 'client' ? '#FFFFFF' : '#F24C03')
+                    : 'rgba(255, 255, 255, 0.35)',
                   background: loginType === type
-                    ? (type === 'client' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(242, 76, 3, 0.1)')
+                    ? (type === 'client' ? 'rgba(255, 255, 255, 0.08)' : 'rgba(242, 76, 3, 0.08)')
                     : 'transparent',
                   border: loginType === type
-                    ? `1px solid ${type === 'client' ? 'rgba(255, 255, 255, 0.15)' : 'rgba(242, 76, 3, 0.2)'}`
+                    ? `1px solid ${type === 'client' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(242, 76, 3, 0.15)'}`
                     : '1px solid transparent',
-                  borderRadius: r.md, cursor: 'pointer', transition: tokens.transition.fast,
+                  borderRadius: 8, cursor: 'pointer', transition: tokens.transition.fast,
                 }}>
                 {type}
               </button>
@@ -274,7 +278,7 @@ export const LoginPage = ({ onLogin }) => {
           </div>
 
           <form onSubmit={handleSubmit}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
               <Input label="Email" type="email" icon={Mail} placeholder="you@example.com" value={email} onChange={(e) => setEmail(e.target.value)} required />
               <Input label="Password" type="password" icon={Lock} placeholder="••••••••" value={password} onChange={(e) => setPassword(e.target.value)} required />
 
@@ -282,11 +286,12 @@ export const LoginPage = ({ onLogin }) => {
               <label style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: 8,
+                gap: 10,
                 cursor: 'pointer',
                 fontSize: 13,
-                color: '#5a7194',
+                color: 'rgba(255, 255, 255, 0.4)',
                 fontFamily: tokens.font.sans,
+                fontWeight: 400,
               }}>
                 <input
                   type="checkbox"
@@ -303,13 +308,13 @@ export const LoginPage = ({ onLogin }) => {
               </label>
 
               {error && (
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 12px', background: c.error.muted, borderRadius: r.md, color: c.error.DEFAULT, fontSize: 13, fontFamily: tokens.font.sans }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 14px', background: 'rgba(239, 68, 68, 0.1)', borderRadius: 10, color: '#ef4444', fontSize: 13, fontFamily: tokens.font.sans }}>
                   <AlertCircle size={16} />
                   {error}
                 </div>
               )}
 
-              <Button type="submit" fullWidth loading={loading} variant="gradient" style={{ marginTop: 4 }}>
+              <Button type="submit" fullWidth loading={loading} variant="gradient" style={{ marginTop: 4, borderRadius: 12, padding: '13px 0' }}>
                 {loading ? 'Signing in...' : 'Sign in'}
               </Button>
             </div>
@@ -317,14 +322,14 @@ export const LoginPage = ({ onLogin }) => {
 
           {/* Demo */}
           <div style={{
-            marginTop: 20,
-            padding: 14,
-            background: 'rgba(2, 4, 9, 0.4)',
-            borderRadius: r.lg,
-            border: '1px solid rgba(49, 72, 185, 0.1)',
+            marginTop: 24,
+            padding: 16,
+            background: 'rgba(2, 4, 9, 0.35)',
+            borderRadius: 12,
+            border: '1px solid rgba(49, 72, 185, 0.08)',
           }}>
-            <p style={{ fontSize: 11, fontWeight: 600, color: '#3d5478', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 6, fontFamily: tokens.font.sans }}>Demo Credentials</p>
-            <p style={{ fontSize: 13, color: '#5a7194', fontFamily: tokens.font.mono }}>
+            <p style={{ fontSize: 11, fontWeight: 600, color: 'rgba(255, 255, 255, 0.25)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 8, fontFamily: tokens.font.sans }}>Demo Credentials</p>
+            <p style={{ fontSize: 13, color: 'rgba(255, 255, 255, 0.4)', fontFamily: tokens.font.mono }}>
               {loginType === 'admin' ? 'admin@bluestarai.world / admin123' : 'chris@azimont.com / client123'}
             </p>
           </div>
@@ -335,11 +340,11 @@ export const LoginPage = ({ onLogin }) => {
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          marginTop: 24,
+          marginTop: 28,
           padding: '0 4px',
         }}>
-          <img src="/Powered_by_BLUESTARAI.svg" alt="Powered by BluestarAI" style={{ height: 10, opacity: 0.35, objectFit: 'contain' }} />
-          <p style={{ fontSize: 11, color: '#3d5478', fontFamily: tokens.font.sans }}>
+          <img src="/Powered_by_BLUESTARAI.svg" alt="Powered by BluestarAI" style={{ height: 10, opacity: 0.3, objectFit: 'contain' }} />
+          <p style={{ fontSize: 11, color: 'rgba(255, 255, 255, 0.2)', fontFamily: tokens.font.sans, fontWeight: 300 }}>
             &copy; 2026 BLUESTARAI. All Rights Reserved.
           </p>
         </div>
