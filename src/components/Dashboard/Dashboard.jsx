@@ -43,17 +43,6 @@ export const Dashboard = ({ user }) => {
   if (isAdmin) {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-        {/* Admin hero banner */}
-        <div style={{ borderRadius: 20, position: 'relative', overflow: 'hidden' }}>
-          <img src="/Frame_48095743.svg" alt="" style={{ width: '100%', height: 'auto', display: 'block' }} />
-          <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', padding: '0 40px' }}>
-            <div>
-              <img src="/LEADGEN_Pro.svg" alt="LeadGen Pro" style={{ height: 24, marginBottom: 12, opacity: 0.7 }} />
-              <p style={{ fontSize: 14, color: '#64748b', fontFamily: tokens.font.sans }}>Admin Overview</p>
-            </div>
-          </div>
-        </div>
-
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16 }}>
           <Metric label="Total Clients" value={stats.clients} icon={Users} iconColor={c.primary[100]} />
           <Metric label="Total Leads" value={fmt.number(stats.leads)} icon={Target} iconColor={c.success.muted} />
@@ -92,53 +81,60 @@ export const Dashboard = ({ user }) => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-      {/* Hero banner with design asset background */}
+      {/* Hero banner */}
       <div style={{
+        padding: '32px 40px',
+        background: 'linear-gradient(135deg, #020617 0%, #0a1628 50%, #0c1e3d 100%)',
         borderRadius: 20,
+        border: '1px solid #3148B9',
         position: 'relative',
         overflow: 'hidden',
         minHeight: 180,
       }}>
-        {/* Full banner background from design */}
-        <img
-          src="/Frame_48095743.svg"
-          alt=""
-          style={{
-            position: 'absolute',
-            inset: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            pointerEvents: 'none',
-          }}
-        />
-
-        {/* 3D logo watermark */}
+        {/* Bottom glow effects */}
         <div style={{
           position: 'absolute',
-          right: 20,
+          bottom: -60,
+          left: '30%',
+          width: '40%',
+          height: 120,
+          background: 'radial-gradient(ellipse at center bottom, rgba(49, 72, 185, 0.4) 0%, transparent 70%)',
+          pointerEvents: 'none',
+        }} />
+        <div style={{
+          position: 'absolute',
+          bottom: 0,
+          left: '35%',
+          width: '30%',
+          height: 30,
+          background: 'radial-gradient(ellipse at center bottom, rgba(255, 255, 255, 0.15) 0%, transparent 70%)',
+          pointerEvents: 'none',
+        }} />
+
+        <div style={{
+          position: 'absolute',
+          right: 30,
           top: '50%',
           transform: 'translateY(-50%)',
-          width: 200,
-          height: 200,
+          width: 180,
+          height: 180,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
         }}>
           <img
-            src="/Bluestar_Logo_3D_-_Copy_3-1536x695.svg"
+            src="/Group_1597880443.svg"
             alt=""
             style={{
               width: '100%',
               height: '100%',
               objectFit: 'contain',
-              opacity: 0.12,
               filter: 'drop-shadow(0 0 40px rgba(49, 72, 185, 0.4))',
             }}
           />
         </div>
 
-        <div style={{ position: 'relative', zIndex: 1, padding: '32px 40px' }}>
+        <div style={{ position: 'relative', zIndex: 1 }}>
           <p style={{
             fontSize: 22,
             color: '#94a3b8',
