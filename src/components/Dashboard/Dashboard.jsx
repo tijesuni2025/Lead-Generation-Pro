@@ -84,7 +84,7 @@ export const Dashboard = ({ user }) => {
       {/* Hero banner */}
       <div style={{
         padding: '32px 40px',
-        background: 'linear-gradient(135deg, #020617 0%, #0a1628 50%, #0c1e3d 100%)',
+        background: 'linear-gradient(135deg, #020409 0%, #0B1828 50%, #0B1828 100%)',
         borderRadius: 20,
         border: '1px solid #3148B9',
         position: 'relative',
