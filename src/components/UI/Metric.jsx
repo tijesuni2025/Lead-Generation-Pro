@@ -1,4 +1,4 @@
-import { tokens, r, c } from '../../styles/theme';
+import { tokens } from '../../styles/theme';
 
 export const Metric = ({ label, value, change, trend, icon: Icon, iconColor, accent = false }) => {
   const isPositive = trend === 'up';
@@ -6,9 +6,9 @@ export const Metric = ({ label, value, change, trend, icon: Icon, iconColor, acc
   return (
     <div style={{
       background: 'linear-gradient(180deg, rgba(46, 51, 90, 0) 0%, rgba(28, 27, 51, 0.2) 100%)',
-      borderRadius: 20,
+      borderRadius: 32,
       padding: '24px',
-      border: '1px solid #3148B9',
+      border: '1.5px solid rgba(172, 186, 253, 0.12)',
       display: 'flex',
       alignItems: 'flex-start',
       justifyContent: 'space-between',
@@ -17,26 +17,29 @@ export const Metric = ({ label, value, change, trend, icon: Icon, iconColor, acc
       position: 'relative',
       overflow: 'hidden',
       minHeight: 140,
+      boxShadow: 'inset 0 0 43px rgba(204, 215, 255, 0.06)',
+      backdropFilter: 'blur(1.35px)',
     }}>
-      {/* Background glow effects */}
+      {/* Bottom blue glow */}
       <div style={{
         position: 'absolute',
-        bottom: -40,
+        bottom: -50,
         left: '50%',
         transform: 'translateX(-50%)',
-        width: '80%',
-        height: 80,
-        background: 'radial-gradient(ellipse at center, rgba(49, 72, 185, 0.3) 0%, transparent 70%)',
+        width: '90%',
+        height: 120,
+        background: 'radial-gradient(ellipse at center, rgba(49, 72, 185, 0.35) 0%, transparent 70%)',
         pointerEvents: 'none',
       }} />
+      {/* Bottom edge light */}
       <div style={{
         position: 'absolute',
         bottom: 0,
         left: '50%',
         transform: 'translateX(-50%)',
-        width: '60%',
-        height: 20,
-        background: 'radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%)',
+        width: '70%',
+        height: 18,
+        background: 'radial-gradient(ellipse at center, rgba(255, 255, 255, 0.07) 0%, transparent 70%)',
         pointerEvents: 'none',
       }} />
 
