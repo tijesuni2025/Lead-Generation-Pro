@@ -64,10 +64,10 @@ export const tokens = {
   },
   transition: { fast: '120ms ease', base: '200ms ease', slow: '300ms ease-out' },
   font: {
-    heading: '"Raleway", -apple-system, BlinkMacSystemFont, sans-serif',
-    body: '"Montserrat", -apple-system, BlinkMacSystemFont, sans-serif',
-    sans: '"Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-    mono: '"SF Mono", Consolas, monospace',
+    heading: '"Raleway", sans-serif',
+    body: '"Montserrat", sans-serif',
+    sans: '"Montserrat", sans-serif',
+    mono: 'monospace',
   },
 };
 
