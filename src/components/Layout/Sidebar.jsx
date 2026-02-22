@@ -23,9 +23,6 @@ export const Sidebar = ({ user, currentPage, setCurrentPage, onLogout, isOpen, o
     { id: 'ai-insights', label: 'AI Assistant', icon: Brain },
     { id: 'integrations', label: 'Integrations', icon: RefreshCw },
     { id: 'compliance', label: 'Compliance', icon: CheckCircle2 },
-    { id: 'security', label: 'Security', icon: Shield },
-    { id: 'help', label: 'Help', icon: Lightbulb },
-    { id: 'settings', label: 'Settings', icon: Settings },
   ];
 
   const NavItem = ({ item }) => {

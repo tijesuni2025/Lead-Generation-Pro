@@ -90,7 +90,6 @@ export const SettingsPage = ({ user }) => {
     { id: 'profile', label: 'Profile', icon: User },
     { id: 'notifications', label: 'Notifications', icon: Bell },
     { id: 'team', label: 'Team & Roles', icon: Users },
-    { id: 'security', label: 'Security', icon: Lock },
   ];
   
   const rolePermissions = {
@@ -652,70 +651,6 @@ export const SettingsPage = ({ user }) => {
         </div>
       )}
       
-      {activeTab === 'security' && (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 20 }}>
-          <Card>
-            <h3 style={{ fontSize: 15, fontWeight: 600, color: c.gray[100], marginBottom: 20 }}>Change Password</h3>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-              <Input label="Current Password" type="password" placeholder="Enter current password" />
-              <Input label="New Password" type="password" placeholder="Enter new password" />
-              <Input label="Confirm New Password" type="password" placeholder="Confirm new password" />
-              <Button style={{ marginTop: 8 }}>Update Password</Button>
-            </div>
-          </Card>
-          
-          <Card>
-            <h3 style={{ fontSize: 15, fontWeight: 600, color: c.gray[100], marginBottom: 20 }}>Two-Factor Authentication</h3>
-            <div style={{ padding: 16, background: c.gray[850], borderRadius: r.lg, marginBottom: 16 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                <div style={{ width: 40, height: 40, borderRadius: r.md, background: c.gray[800], display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <Lock size={20} style={{ color: c.gray[500] }} />
-                </div>
-                <div style={{ flex: 1 }}>
-                  <p style={{ fontSize: 14, color: c.gray[200] }}>2FA Status</p>
-                  <p style={{ fontSize: 12, color: c.gray[500] }}>Add an extra layer of security</p>
-                </div>
-                <span style={{ padding: '4px 10px', borderRadius: r.full, fontSize: 11, background: c.warning.muted, color: c.warning.DEFAULT }}>
-                  Not Enabled
-                </span>
-              </div>
-            </div>
-            <Button variant="secondary" fullWidth>Enable Two-Factor Authentication</Button>
-          </Card>
-          
-          <Card>
-            <h3 style={{ fontSize: 15, fontWeight: 600, color: c.gray[100], marginBottom: 20 }}>Active Sessions</h3>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              <div style={{ padding: 12, background: c.gray[850], borderRadius: r.lg, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <div>
-                  <p style={{ fontSize: 14, color: c.gray[200] }}>Current Session</p>
-                  <p style={{ fontSize: 12, color: c.gray[500] }}>Chrome on Windows • Charlotte, NC</p>
-                </div>
-                <span style={{ padding: '4px 10px', borderRadius: r.full, fontSize: 11, background: c.success.muted, color: c.success.DEFAULT }}>
-                  Active
-                </span>
-              </div>
-            </div>
-            <Button variant="secondary" fullWidth style={{ marginTop: 16 }}>Sign Out All Other Sessions</Button>
-          </Card>
-          
-          <Card>
-            <h3 style={{ fontSize: 15, fontWeight: 600, color: c.gray[100], marginBottom: 20 }}>Danger Zone</h3>
-            <div style={{ padding: 16, background: `${c.error.DEFAULT}10`, borderRadius: r.lg, border: `1px solid ${c.error.DEFAULT}30` }}>
-              <p style={{ fontSize: 14, color: c.error.DEFAULT, marginBottom: 8 }}>Delete Account</p>
-              <p style={{ fontSize: 12, color: c.gray[500], marginBottom: 12 }}>
-                Once you delete your account, there is no going back. All your data will be permanently removed.
-              </p>
-              <Button 
-                variant="secondary" 
-                style={{ background: c.error.muted, color: c.error.DEFAULT, border: `1px solid ${c.error.DEFAULT}50` }}
-              >
-                Delete Account
-              </Button>
-            </div>
-          </Card>
-        </div>
-      )}
       
       {showInviteModal && (
         <div onClick={() => setShowInviteModal(false)} style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.8)', backdropFilter: 'blur(4px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24, zIndex: 100 }}>
