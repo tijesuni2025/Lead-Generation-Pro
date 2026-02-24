@@ -4,15 +4,17 @@ import { useState, createContext, useContext } from 'react';
 import { tokens, c, r } from './styles/theme';
 
 // 3. Components (All imported from one source)
-import { 
+import {
   // Features
    Dashboard, AIAssistant, Sidebar, Header, AdminClients, AdminUpload,
-  
+
   // Pages & Wrappers
-    HelpPage, SecurityCenterPage, CompliancePage, SettingsPage, SequencesPage, CalendarPage, LeadsPage, IntegrationsPage, LoginPage, 
-  
-   ErrorBoundary 
+    HelpPage, SecurityCenterPage, CompliancePage, SettingsPage, SequencesPage, CalendarPage, LeadsPage, IntegrationsPage, LoginPage,
+
+   ErrorBoundary
 } from './components';
+
+import { LeadModelPage } from './components/LeadModelPage/LeadModelPage';
 
 
 
@@ -56,20 +58,21 @@ export default function App() {
   
   if (!user) return <ErrorBoundary><LoginPage onLogin={setUser} /></ErrorBoundary>;
   
-  const titles = { 
-    dashboard: 'Dashboard', 
-    clients: 'Clients', 
-    upload: 'Import', 
-    analytics: 'Analytics', 
-    leads: 'Leads', 
+  const titles = {
+    dashboard: 'Dashboard',
+    clients: 'Clients',
+    upload: 'Import',
+    analytics: 'Analytics',
+    leads: 'Leads',
+    'lead-model': 'AI Lead Model',
     sequences: 'Sequences',
     calendar: 'Calendar',
-    'ai-insights': 'AI Assistant', 
+    'ai-insights': 'AI Assistant',
     integrations: 'Integrations',
     compliance: 'Compliance',
     security: 'Security Center',
     help: 'Help Center',
-    settings: 'Settings' 
+    settings: 'Settings'
   };
   
   const renderPage = () => {
@@ -77,6 +80,7 @@ export default function App() {
       switch (page) {
         case 'clients': return <AdminClients />;
         case 'upload': return <AdminUpload />;
+        case 'lead-model': return <LeadModelPage user={user} />;
         case 'security': return <SecurityCenterPage user={user} />;
         case 'settings': return <SettingsPage user={user} />;
         default: return <Dashboard user={user} />;
@@ -84,6 +88,7 @@ export default function App() {
     }
     switch (page) {
       case 'leads': return <LeadsPage user={user} highlightLead={selectedLead} />;
+      case 'lead-model': return <LeadModelPage user={user} />;
       case 'sequences': return <SequencesPage user={user} />;
       case 'calendar': return <CalendarPage user={user} />;
       case 'ai-insights': return <AIAssistant user={user} />;

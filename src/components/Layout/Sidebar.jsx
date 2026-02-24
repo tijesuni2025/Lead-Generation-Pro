@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { LayoutDashboard, Users, Upload, BarChart3, Shield, Settings, Zap, CalendarDays, Brain, RefreshCw, CheckCircle2, Lightbulb, LogOut } from 'lucide-react';
+import { LayoutDashboard, Users, Upload, BarChart3, Shield, Settings, Zap, CalendarDays, Brain, RefreshCw, CheckCircle2, Lightbulb, LogOut, Sparkles } from 'lucide-react';
 import { UserOrgAvatar } from '../UserProfile/Avatar';
 import { CONFIG } from '../../utils/CONFIG';
 import { c, r, tokens } from '../../styles/theme';
@@ -12,12 +12,14 @@ export const Sidebar = ({ user, currentPage, setCurrentPage, onLogout, isOpen, o
     { id: 'dashboard', label: 'Overview', icon: LayoutDashboard },
     { id: 'clients', label: 'Clients', icon: Users },
     { id: 'upload', label: 'Import', icon: Upload },
+    { id: 'lead-model', label: 'AI Lead Model', icon: Sparkles },
     { id: 'analytics', label: 'Analytics', icon: BarChart3 },
     { id: 'security', label: 'Security', icon: Shield },
     { id: 'settings', label: 'Settings', icon: Settings },
   ] : [
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { id: 'leads', label: 'Leads', icon: Users },
+    { id: 'lead-model', label: 'AI Lead Model', icon: Sparkles },
     { id: 'sequences', label: 'Sequences', icon: Zap },
     { id: 'calendar', label: 'Calendar', icon: CalendarDays },
     { id: 'ai-insights', label: 'AI Assistant', icon: Brain },
