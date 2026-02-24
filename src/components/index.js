@@ -41,3 +41,5 @@ export { FileUploadModal } from '../utils/FileUploadModal';
 export { default as leadAI } from '../services/leadAI';
 export { AdminClients } from './Admin/AdminClients';
 export { AdminUpload } from './Admin/adminUpload';
+// Lead Model
+export { LeadModelPage } from './LeadModelPage/LeadModelPage';
