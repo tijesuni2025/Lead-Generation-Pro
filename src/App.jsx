@@ -123,7 +123,6 @@ export default function App() {
       
       Styles
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap');
         @keyframes pulse { 0%, 80%, 100% { opacity: 0.3; transform: scale(0.8); } 40% { opacity: 1; transform: scale(1); } }
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         @keyframes glow { 0%, 100% { box-shadow: 0 0 20px rgba(242, 76, 3, 0.3); } 50% { box-shadow: 0 0 30px rgba(49, 72, 185, 0.4); } }

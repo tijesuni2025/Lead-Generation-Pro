@@ -778,10 +778,13 @@ const ScoreBadge = ({ score, grade, large }) => {
 };
 
 const MetricCard = ({ label, value, sub, color }) => (
-  <div style={{ padding: 12, background: c.gray[900], borderRadius: r.lg, border: `1px solid ${c.gray[800]}` }}>
-    <span style={{ color: c.gray[500], fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block' }}>{label}</span>
-    <span style={{ color: color || c.gray[100], fontSize: 20, fontWeight: 700, fontFamily: tokens.font.heading, display: 'block', marginTop: 2 }}>{value}</span>
-    {sub && <span style={{ color: c.gray[500], fontSize: 10 }}>{sub}</span>}
+  <div style={{ padding: 14, background: GLASS.bg, borderRadius: 20, border: GLASS.border, boxShadow: GLASS.shadow, backdropFilter: GLASS.blur, position: 'relative', overflow: 'hidden' }}>
+    <GlowBottom />
+    <div style={{ position: 'relative', zIndex: 1 }}>
+      <span style={{ color: '#94a3b8', fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', fontFamily: tokens.font.sans }}>{label}</span>
+      <span style={{ color: color || c.gray[100], fontSize: 20, fontWeight: 700, fontFamily: tokens.font.heading, display: 'block', marginTop: 2 }}>{value}</span>
+      {sub && <span style={{ color: '#94a3b8', fontSize: 10, fontFamily: tokens.font.sans }}>{sub}</span>}
+    </div>
   </div>
 );
 
@@ -819,104 +822,135 @@ function getScoreColor(score) {
 }
 
 // =============================================================================
+// GLASSMORPHIC CONSTANTS (matches Card.jsx / StatCard.jsx / Metric.jsx)
+// =============================================================================
+
+const GLASS = {
+  bg: 'linear-gradient(180deg, rgba(46, 51, 90, 0) 0%, rgba(28, 27, 51, 0.2) 100%)',
+  border: '1.5px solid rgba(172, 186, 253, 0.12)',
+  borderHover: '1.5px solid rgba(172, 186, 253, 0.25)',
+  shadow: 'inset 0 0 43px rgba(204, 215, 255, 0.06)',
+  blur: 'blur(1.35px)',
+  innerBg: 'rgba(46, 51, 90, 0.15)',
+  innerBorder: '1px solid rgba(172, 186, 253, 0.08)',
+};
+
+const GlowBottom = () => (
+  <>
+    <div style={{ position: 'absolute', bottom: -50, left: '50%', transform: 'translateX(-50%)', width: '90%', height: 120, background: 'radial-gradient(ellipse at center, rgba(49, 72, 185, 0.35) 0%, transparent 70%)', pointerEvents: 'none' }} />
+    <div style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '70%', height: 18, background: 'radial-gradient(ellipse at center, rgba(255, 255, 255, 0.07) 0%, transparent 70%)', pointerEvents: 'none' }} />
+  </>
+);
+
+// =============================================================================
 // STYLES
 // =============================================================================
 
 const styles = {
   backBtn: {
-    display: 'flex', alignItems: 'center', gap: 4, padding: '6px 12px', fontSize: 13, fontWeight: 500,
-    color: c.gray[300], background: c.gray[900], border: `1px solid ${c.gray[800]}`, borderRadius: r.lg,
+    display: 'flex', alignItems: 'center', gap: 4, padding: '6px 14px', fontSize: 13, fontWeight: 500,
+    color: '#94a3b8', background: GLASS.bg, border: GLASS.border, borderRadius: 16,
     cursor: 'pointer', fontFamily: tokens.font.sans, transition: tokens.transition.fast,
+    backdropFilter: GLASS.blur,
   },
   industryBadge: {
     display: 'inline-flex', alignItems: 'center', gap: 6, padding: '4px 10px', borderRadius: r.full,
-    border: '1px solid', fontSize: 12,
+    border: '1px solid', fontSize: 12, fontFamily: tokens.font.sans,
   },
   actionBtn: {
     display: 'flex', alignItems: 'center', gap: 6, padding: '7px 14px', fontSize: 13, fontWeight: 500,
-    color: c.gray[300], background: c.gray[900], border: `1px solid ${c.gray[800]}`, borderRadius: r.lg,
+    color: '#94a3b8', background: GLASS.bg, border: GLASS.border, borderRadius: 16,
     cursor: 'pointer', fontFamily: tokens.font.sans, transition: tokens.transition.fast,
+    backdropFilter: GLASS.blur,
   },
   searchInput: {
     width: '100%', padding: '8px 12px 8px 34px', fontSize: 13, color: c.gray[100],
-    background: c.gray[900], border: `1px solid ${c.gray[800]}`, borderRadius: r.lg, outline: 'none',
+    background: 'rgba(46, 51, 90, 0.2)', border: GLASS.border, borderRadius: 16, outline: 'none',
     fontFamily: tokens.font.sans,
   },
   selectInput: {
-    padding: '8px 12px', fontSize: 13, color: c.gray[300], background: c.gray[900],
-    border: `1px solid ${c.gray[800]}`, borderRadius: r.lg, outline: 'none', cursor: 'pointer',
+    padding: '8px 12px', fontSize: 13, color: '#94a3b8', background: 'rgba(46, 51, 90, 0.2)',
+    border: GLASS.border, borderRadius: 16, outline: 'none', cursor: 'pointer',
     fontFamily: tokens.font.sans,
   },
   loadingContainer: {
     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, padding: 60,
-    background: c.gray[900], borderRadius: r.xl, border: `1px solid ${c.gray[800]}`,
+    background: GLASS.bg, borderRadius: 32, border: GLASS.border,
+    boxShadow: GLASS.shadow, backdropFilter: GLASS.blur, position: 'relative', overflow: 'hidden',
   },
   emptyState: {
     display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 12, padding: 60,
-    background: c.gray[900], borderRadius: r.xl, border: `1px solid ${c.gray[800]}`,
+    background: GLASS.bg, borderRadius: 32, border: GLASS.border,
+    boxShadow: GLASS.shadow, backdropFilter: GLASS.blur,
   },
   industryCard: {
-    display: 'flex', flexDirection: 'column', gap: 12, padding: 20, background: c.gray[900],
-    border: `1px solid ${c.gray[800]}`, borderRadius: r.xl, cursor: 'pointer', textAlign: 'left',
+    display: 'flex', flexDirection: 'column', gap: 12, padding: 24, background: GLASS.bg,
+    border: GLASS.border, borderRadius: 32, cursor: 'pointer', textAlign: 'left',
     transition: tokens.transition.base, fontFamily: tokens.font.sans,
+    boxShadow: GLASS.shadow, backdropFilter: GLASS.blur, position: 'relative', overflow: 'hidden',
   },
   industryIconWrap: {
-    width: 52, height: 52, borderRadius: r.lg, display: 'flex', alignItems: 'center', justifyContent: 'center',
+    width: 56, height: 56, borderRadius: 14, display: 'flex', alignItems: 'center', justifyContent: 'center',
+    background: 'linear-gradient(180deg, rgba(46, 51, 90, 0.5) 0%, rgba(28, 27, 51, 0.3) 100%)',
+    backdropFilter: 'blur(6px)', border: '1px solid rgba(172, 186, 253, 0.15)',
   },
   svCard: {
-    display: 'flex', flexDirection: 'column', gap: 4, padding: 16, background: c.gray[900],
-    border: `1px solid ${c.gray[800]}`, borderRadius: r.xl, cursor: 'pointer', textAlign: 'left',
+    display: 'flex', flexDirection: 'column', gap: 4, padding: 20, background: GLASS.bg,
+    border: GLASS.border, borderRadius: 32, cursor: 'pointer', textAlign: 'left',
     transition: tokens.transition.base, fontFamily: tokens.font.sans,
+    boxShadow: GLASS.shadow, backdropFilter: GLASS.blur, position: 'relative', overflow: 'hidden',
   },
   chip: {
     display: 'inline-flex', padding: '2px 8px', fontSize: 10, fontWeight: 500, borderRadius: r.full,
-    border: '1px solid', background: 'transparent',
+    border: '1px solid', background: 'transparent', fontFamily: tokens.font.sans,
   },
   analyticsCard: {
-    display: 'flex', flexDirection: 'column', gap: 4, padding: '12px 14px', background: c.gray[900],
-    border: `1px solid ${c.gray[800]}`, borderRadius: r.lg,
+    display: 'flex', flexDirection: 'column', gap: 4, padding: '14px 16px', background: GLASS.bg,
+    border: GLASS.border, borderRadius: 24, boxShadow: GLASS.shadow, backdropFilter: GLASS.blur,
+    position: 'relative', overflow: 'hidden',
   },
   tableContainer: {
-    overflowX: 'auto', borderRadius: r.xl, border: `1px solid ${c.gray[800]}`, background: c.gray[900],
+    overflowX: 'auto', borderRadius: 32, border: GLASS.border, background: GLASS.bg,
+    boxShadow: GLASS.shadow, backdropFilter: GLASS.blur,
   },
   table: {
     width: '100%', borderCollapse: 'collapse', fontSize: 13, fontFamily: tokens.font.sans,
   },
   th: {
-    padding: '10px 12px', textAlign: 'left', fontSize: 11, fontWeight: 600, color: c.gray[400],
-    borderBottom: `1px solid ${c.gray[800]}`, whiteSpace: 'nowrap', textTransform: 'uppercase',
-    letterSpacing: '0.04em', userSelect: 'none', background: c.gray[900],
+    padding: '12px 14px', textAlign: 'left', fontSize: 11, fontWeight: 600, color: '#94a3b8',
+    borderBottom: '1px solid rgba(172, 186, 253, 0.08)', whiteSpace: 'nowrap', textTransform: 'uppercase',
+    letterSpacing: '0.04em', userSelect: 'none', fontFamily: tokens.font.sans,
   },
   tr: {
     cursor: 'pointer', transition: tokens.transition.fast,
   },
   td: {
-    padding: '10px 12px', borderBottom: `1px solid ${c.gray[800]}22`, whiteSpace: 'nowrap',
-    maxWidth: 180, overflow: 'hidden', textOverflow: 'ellipsis',
+    padding: '10px 14px', borderBottom: '1px solid rgba(172, 186, 253, 0.05)', whiteSpace: 'nowrap',
+    maxWidth: 180, overflow: 'hidden', textOverflow: 'ellipsis', fontFamily: tokens.font.sans,
   },
   viewBtn: {
     display: 'flex', alignItems: 'center', justifyContent: 'center', width: 28, height: 28,
-    borderRadius: r.md, background: 'transparent', border: `1px solid ${c.gray[800]}`,
-    color: c.gray[400], cursor: 'pointer', transition: tokens.transition.fast,
+    borderRadius: 8, background: 'rgba(46, 51, 90, 0.3)', border: '1px solid rgba(172, 186, 253, 0.12)',
+    color: '#94a3b8', cursor: 'pointer', transition: tokens.transition.fast,
   },
   modalOverlay: {
     position: 'fixed', inset: 0, background: 'rgba(2, 4, 9, 0.85)', backdropFilter: 'blur(8px)',
     display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 100, padding: 20,
   },
   modalContent: {
-    width: '100%', maxWidth: 680, maxHeight: '90vh', background: c.gray[900],
-    border: `1px solid ${c.gray[800]}`, borderRadius: r.xl, display: 'flex', flexDirection: 'column',
-    overflow: 'hidden',
+    width: '100%', maxWidth: 680, maxHeight: '90vh', background: 'linear-gradient(180deg, rgba(11, 24, 40, 0.98) 0%, rgba(2, 4, 9, 0.98) 100%)',
+    border: GLASS.border, borderRadius: 32, display: 'flex', flexDirection: 'column',
+    overflow: 'hidden', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 0 43px rgba(204, 215, 255, 0.04)',
   },
   modalHeader: {
-    display: 'flex', alignItems: 'center', padding: '16px 20px', borderBottom: `1px solid ${c.gray[800]}`,
+    display: 'flex', alignItems: 'center', padding: '18px 24px', borderBottom: '1px solid rgba(172, 186, 253, 0.08)',
   },
   closeBtn: {
     display: 'flex', alignItems: 'center', justifyContent: 'center', width: 32, height: 32,
-    borderRadius: r.md, background: 'transparent', border: 'none', color: c.gray[400], cursor: 'pointer',
+    borderRadius: 8, background: 'transparent', border: 'none', color: '#94a3b8', cursor: 'pointer',
   },
   tabBar: {
-    display: 'flex', borderBottom: `1px solid ${c.gray[800]}`, padding: '0 20px',
+    display: 'flex', borderBottom: '1px solid rgba(172, 186, 253, 0.08)', padding: '0 24px',
   },
   tab: {
     padding: '10px 16px', fontSize: 12, fontWeight: 500, background: 'none', border: 'none',
@@ -924,11 +958,11 @@ const styles = {
     transition: tokens.transition.fast,
   },
   modalBody: {
-    padding: 20, overflowY: 'auto', flex: 1,
+    padding: 24, overflowY: 'auto', flex: 1,
   },
   flagsContainer: {
-    display: 'flex', flexDirection: 'column', gap: 6, padding: 12, background: c.gray[900],
-    border: `1px solid ${c.gray[800]}`, borderRadius: r.lg,
+    display: 'flex', flexDirection: 'column', gap: 6, padding: 14, background: GLASS.innerBg,
+    border: GLASS.innerBorder, borderRadius: 16,
   },
   flag: {
     display: 'flex', alignItems: 'center', gap: 6, padding: '4px 0', borderLeft: '2px solid',
@@ -936,38 +970,39 @@ const styles = {
   },
   fieldRow: {
     display: 'flex', justifyContent: 'space-between', padding: '6px 0',
-    borderBottom: `1px solid ${c.gray[800]}22`,
+    borderBottom: '1px solid rgba(172, 186, 253, 0.05)',
   },
   scoreDimension: {
     display: 'flex', flexDirection: 'column', gap: 4,
   },
   scoreBarBg: {
-    width: '100%', height: 6, background: c.gray[800], borderRadius: r.full, overflow: 'hidden',
+    width: '100%', height: 6, background: 'rgba(172, 186, 253, 0.1)', borderRadius: r.full, overflow: 'hidden',
   },
   scoreBarFill: {
     height: '100%', borderRadius: r.full, transition: 'width 0.5s ease',
   },
   dataRow: {
-    display: 'flex', gap: 12, padding: '6px 0', borderBottom: `1px solid ${c.gray[800]}22`,
+    display: 'flex', gap: 12, padding: '6px 0', borderBottom: '1px solid rgba(172, 186, 253, 0.05)',
   },
   actionCard: {
-    padding: 16, background: c.gray[900], border: `1px solid ${c.gray[800]}`, borderRadius: r.lg,
+    padding: 16, background: GLASS.innerBg, border: GLASS.innerBorder, borderRadius: 16,
     borderLeftWidth: 3, borderLeftStyle: 'solid',
   },
   quickAction: {
     display: 'flex', alignItems: 'center', gap: 6, padding: '8px 14px', fontSize: 12, fontWeight: 500,
-    color: c.gray[300], background: c.gray[900], border: `1px solid ${c.gray[800]}`, borderRadius: r.lg,
+    color: '#94a3b8', background: GLASS.innerBg, border: GLASS.innerBorder, borderRadius: 14,
     cursor: 'pointer', fontFamily: tokens.font.sans, transition: tokens.transition.fast,
   },
   pageBtn: {
-    padding: '5px 10px', fontSize: 12, color: c.gray[400], background: 'transparent',
-    border: `1px solid ${c.gray[800]}`, borderRadius: r.md, cursor: 'pointer',
+    padding: '5px 10px', fontSize: 12, color: '#94a3b8', background: 'transparent',
+    border: GLASS.border, borderRadius: 8, cursor: 'pointer',
     fontFamily: tokens.font.sans,
   },
   columnPicker: {
-    position: 'absolute', top: '100%', right: 0, marginTop: 4, width: 240, padding: 12,
-    background: c.gray[900], border: `1px solid ${c.gray[800]}`, borderRadius: r.lg,
-    boxShadow: tokens.shadow.lg, zIndex: 50,
+    position: 'absolute', top: '100%', right: 0, marginTop: 4, width: 240, padding: 14,
+    background: 'linear-gradient(180deg, rgba(11, 24, 40, 0.98) 0%, rgba(2, 4, 9, 0.98) 100%)',
+    border: GLASS.border, borderRadius: 20,
+    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)', zIndex: 50,
   },
 };
 
